@@ -3,12 +3,17 @@ import { useParams, Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import ExpenseList from "../components/ExpenseList.jsx";
 import TimeRangeSelector from "../components/TimeRangeSelector.jsx";
+import Loading from "../components/Loading.jsx";
 import { useExpenses } from "../context/ExpenseContext.jsx";
 import { fmtMoney, ymLabel, parseToDate } from "../utils/date";
 import { isSameDay, isSameWeek } from "date-fns";
 export default function MonthDetail() {
   const { ym } = useParams();
-  const { byMonth } = useExpenses();
+  const { byMonth, isLoading } = useExpenses();
+  
+  if (isLoading) {
+    return <Loading />;
+  }
   const [range, setRange] = useState("monthly");
   const items = (byMonth.find(([key]) => key === ym) || [ym, []])[1];
   const total = useMemo(

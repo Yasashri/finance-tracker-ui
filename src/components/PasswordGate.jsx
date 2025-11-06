@@ -13,7 +13,7 @@ export default function PasswordGate({ children, password }){
           <input className="gate-input" placeholder="Password" type="password" value={pw} onChange={e=>setPw(e.target.value)}/>
           <button type="submit">Unlock</button>
         </div></form>
-        <div className="small">Hint: <b>yasas</b></div>
+        <div className="small">Hint: <b>Greatest Man Ever</b></div>
       </div>
     </div>
   )

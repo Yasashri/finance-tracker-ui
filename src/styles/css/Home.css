@@ -1,20 +1,21 @@
-.home {
-  .main-month {
-    display: flex;
-    justify-content: center;
-    h2{
-        margin-bottom: 0;
-    }
-  }
+.home .main-month {
+  display: flex;
+  justify-content: center;
 }
+.home .main-month h2 {
+  margin-bottom: 0;
+}
+
 .section {
   display: grid;
   gap: 12px;
 }
+
 .months {
   display: grid;
   gap: 10px;
 }
+
 .month-row {
   display: flex;
   justify-content: space-between;
@@ -25,9 +26,11 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   gap: 10px;
 }
+
 .muted {
   color: var(--muted);
 }
+
 @media (max-width: 640px) {
   .month-row {
     flex-direction: column;

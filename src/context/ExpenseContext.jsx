@@ -11,11 +11,16 @@ export function ExpenseProvider({ children }){
   const [useServer,setUseServer] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [loadingComplete, setLoadingComplete] = useState(false)
+  const MINIMUM_LOADING_TIME = 5000; // 5 seconds
 
   useEffect(()=>{ (async()=>{
     try {
       setIsLoading(true)
       setError(null)
+      const startTime = Date.now();
+      
+      // Load data
       const ok = await apiReachable()
       setUseServer(ok)
       if(ok){
@@ -30,11 +35,22 @@ export function ExpenseProvider({ children }){
           setError('Failed to load local expenses')
         }
       }
+      
+      // Calculate remaining time to meet minimum duration
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = Math.max(0, MINIMUM_LOADING_TIME - elapsedTime);
+      
+      setLoadingComplete(true);
+      
+      // Wait for minimum duration before hiding loading screen
+      setTimeout(() => {
+        setIsLoading(false);
+      }, remainingTime);
+      
     } catch (e) {
       console.error('Failed to initialize expenses', e)
       setError('Failed to connect to server')
       setUseServer(false)
-    } finally {
       setIsLoading(false)
     }
   })() }, [])

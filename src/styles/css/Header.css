@@ -7,6 +7,9 @@
   border-bottom: 3px solid var(--text);
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
 }
+.header .navbar {
+  padding: 0 16px;
+}
 
 .header-inner {
   display: grid;
@@ -26,8 +29,8 @@
 }
 
 .brand img {
-  width: 36px;
-  height: 36px;
+  width: 261px;
+  height: 75px;
 }
 
 .menu-btn {
@@ -63,6 +66,9 @@
 }
 
 @media (max-width: 760px) {
+  .header .navbar {
+    padding: 0 16px 0 5px;
+  }
   .menu-btn {
     display: inline-flex;
   }
@@ -75,6 +81,7 @@
   .nav.open {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
   }
   .nav a {
     flex: 1 1 140px;

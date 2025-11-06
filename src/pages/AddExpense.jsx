@@ -2,10 +2,15 @@ import "./AddExpense.scss";
 import { useMemo } from "react";
 import ExpenseForm from "../components/ExpenseForm.jsx";
 import ExpenseList from "../components/ExpenseList.jsx";
+import Loading from "../components/Loading.jsx";
 import { useExpenses } from "../context/ExpenseContext.jsx";
 import useLocalStorage from "../hooks/useLocalStorage";
 export default function AddExpense() {
-  const { expenses, addExpense, removeExpense, clearAll } = useExpenses();
+  const { expenses, addExpense, removeExpense, clearAll, isLoading } = useExpenses();
+  
+  if (isLoading) {
+    return <Loading />;
+  }
   const [query, setQuery] = useLocalStorage("exp_query", "");
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -23,7 +28,7 @@ export default function AddExpense() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button className='ghost' onClick={() => exportJSON(expenses)}>
+         {/*  <button className='ghost' onClick={() => exportJSON(expenses)}>
             Export
           </button>
           <label
@@ -43,7 +48,7 @@ export default function AddExpense() {
               style={{ display: "none" }}
               onChange={handleImport(clearAll)}
             />
-          </label>
+          </label> */}
         </div>
       </div>
       <ExpenseForm onSubmit={addExpense} />
