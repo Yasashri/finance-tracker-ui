@@ -1,0 +1,20 @@
+// Cartoonish Theme Variables
+$radius: 24px;
+$shadow: 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+// Colors
+$primary-color: #FF6B6B;
+$secondary-color: #4ECDC4;
+$background-color: #F7F9FC;
+$accent-color: #FFE66D;
+$text-color: #2C3E50;
+
+// Cartoonish Elements
+$border-width: 3px;
+$button-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+$hover-transform: translateY(-2px);
+$active-transform: translateY(2px);
+
+// Animation
+$bounce-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+$transition-speed: 0.2s;

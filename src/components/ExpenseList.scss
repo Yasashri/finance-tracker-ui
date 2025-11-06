@@ -1,0 +1,93 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.list {
+  display: grid;
+  gap: 8px;
+}
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: $border-width solid var(--text);
+  border-radius: $radius;
+  background: var(--panel);
+  box-shadow: $shadow;
+  transition: transform $transition-speed $bounce-timing,
+              box-shadow $transition-speed ease;
+  
+  &:hover {
+    transform: $hover-transform;
+    box-shadow: 6px 12px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+.item .name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.item .date {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.item .amount {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--secondary);
+  padding: 8px 12px;
+  border: $border-width dashed var(--text);
+  border-radius: $radius;
+  background: var(--highlight);
+}
+.ghost {
+  background: transparent;
+  color: var(--text);
+  border: $border-width solid var(--text);
+  box-shadow: $button-shadow;
+  transition: all $transition-speed $bounce-timing;
+
+  &:hover:not([disabled]) {
+    background: var(--highlight);
+    transform: $hover-transform;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  &:active:not([disabled]) {
+    transform: $active-transform;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+@media (max-width: 640px) {
+  .item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .item button {
+    width: 100%;
+  }
+}
+
+.pagination {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+.pagination .page-indicator {
+  color: var(--text);
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: $radius;
+  border: $border-width solid var(--text);
+  background: var(--panel);
+  box-shadow: $shadow;
+}
+.pagination .ghost[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

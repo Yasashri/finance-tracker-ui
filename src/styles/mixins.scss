@@ -1,0 +1,63 @@
+@mixin cartoon-panel {
+  background-color: white;
+  border: $border-width solid $text-color;
+  border-radius: $radius;
+  padding: 20px;
+  box-shadow: $shadow;
+  transition: transform $transition-speed $bounce-timing,
+              box-shadow $transition-speed ease;
+  
+  &:hover {
+    transform: $hover-transform;
+    box-shadow: 6px 12px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+
+@mixin cartoon-button {
+  background-color: $primary-color;
+  color: white;
+  border: $border-width solid darken($primary-color, 10%);
+  border-radius: $radius;
+  padding: 12px 24px;
+  font-weight: bold;
+  box-shadow: $button-shadow;
+  transition: all $transition-speed $bounce-timing;
+  cursor: pointer;
+
+  &:hover {
+    transform: $hover-transform;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: $active-transform;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+
+@mixin cartoon-input {
+  border: $border-width solid $text-color;
+  border-radius: $radius;
+  padding: 12px;
+  background-color: white;
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: all $transition-speed ease;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: inset 2px 2px 0 rgba($primary-color, 0.1);
+  }
+}
+
+@mixin cartoon-card {
+  @include cartoon-panel;
+  background-color: white;
+  margin-bottom: 20px;
+  
+  h2, h3 {
+    color: $text-color;
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+}

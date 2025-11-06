@@ -1,0 +1,91 @@
+.list {
+  display: grid;
+  gap: 8px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 3px solid var(--text);
+  border-radius: 24px;
+  background: var(--panel);
+  box-shadow: 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), box-shadow 0.2s ease;
+}
+.item:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 12px 0 rgba(0, 0, 0, 0.15);
+}
+
+.item .name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.item .date {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.item .amount {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--secondary);
+  padding: 8px 12px;
+  border: 3px dashed var(--text);
+  border-radius: 24px;
+  background: var(--highlight);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text);
+  border: 3px solid var(--text);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.ghost:hover:not([disabled]) {
+  background: var(--highlight);
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+}
+.ghost:active:not([disabled]) {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 640px) {
+  .item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .item button {
+    width: 100%;
+  }
+}
+.pagination {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.pagination .page-indicator {
+  color: var(--text);
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 24px;
+  border: 3px solid var(--text);
+  background: var(--panel);
+  box-shadow: 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pagination .ghost[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

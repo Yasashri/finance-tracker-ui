@@ -1,0 +1,47 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 14px 0;
+  background: var(--bg);
+  border-bottom: $border-width solid var(--text);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+.header-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--accent);
+  text-shadow: 2px 2px 0 var(--text);
+}
+.brand img{width:36px;height:36px}
+.menu-btn {
+  display: none;
+  background: transparent;
+  color: var(--text);
+  border: $border-width solid var(--text);
+  padding: 8px 12px;
+  border-radius: $radius;
+  box-shadow: $button-shadow;
+  transition: all $transition-speed $bounce-timing;
+
+  &:hover {
+    background: var(--highlight);
+    transform: $hover-transform;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: $active-transform;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+.nav{display:flex;gap:8px;justify-self:end}
+.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.09)}
+@media (max-width:760px){.menu-btn{display:inline-flex}.nav{display:none;grid-column:1 / -1;margin-top:8px;gap:8px}.nav.open{display:flex;flex-wrap:wrap}.nav a{flex:1 1 140px}.nav button{width:100%}}

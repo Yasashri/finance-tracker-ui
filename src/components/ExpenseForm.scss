@@ -1,0 +1,1 @@
+.form{display:grid;gap:12px}.row{display:flex;gap:10px}.row>*{flex:1;min-width:0}.actions{display:flex;gap:8px;justify-content:flex-end}@media(max-width:640px){.row{flex-direction:column}.actions{justify-content:stretch}.actions button{width:100%}}
